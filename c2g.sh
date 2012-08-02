@@ -242,12 +242,14 @@ else
     exit 1
 fi
 
-set -x
+set +x
 
 cat <<EOF
-The CVS repository $FROM was converted to the Git repository in $TO/git.
 
-Convertion logs are available in $TO/log.convert
+CVS repo: $FROM
+Git repo: $TO/git
 
-Import logs are available in $TO/log.import
+Convertion logs: $TO/log.convert
+Import logs:     $TO/log.import
+
 EOF
