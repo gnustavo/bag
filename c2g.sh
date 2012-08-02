@@ -222,13 +222,25 @@ EOF
 
 sed -e "s:CVSBASE:$FROM:" $TMPDIR/cvs2git.options >cvs2git.options
 
-time cvs2git --options=cvs2git.options >&log.convert
+if time cvs2git --options=cvs2git.options >&log.convert; then
+    :
+else
+    echo >&2 "ERROR: See logs in $TO/log.convert"
+    exit 1
+fi
 
 mkdir git
 cd git
 git init --bare
 
-cat ../tmp/git-blob.dat ../tmp/git-dump.dat | time git fast-import >&../log.import
+
+
+if cat ../tmp/git-blob.dat ../tmp/git-dump.dat | time git fast-import >&../log.import; then
+    :
+else
+    echo >&2 "ERROR: See logs in $TO/log.import"
+    exit 1
+fi
 
 set -x
 
