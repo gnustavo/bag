@@ -21,7 +21,7 @@
 set -eu
 IFS=`printf '\n\t'`
 
-usage="usage: $0 CVSDIR GITDIR"
+usage="usage: $0 CVSDIR GITDIR [AUTHORS]"
 
 if [ $# -ne 2 ]; then
     echo >&2 $usage
@@ -192,12 +192,13 @@ ctx.keep_cvsignore = False
 ctx.retain_conflicting_attic_files = False
 
 author_transforms={
-    'jrandom' : ('J. Random', 'jrandom@example.com'),
-    'mhagger' : ('Michael Haggerty', 'mhagger@alum.mit.edu'),
-    'brane' : (u'Branko Čibej', 'brane@xbc.nu'),
-    'ringstrom' : ('Tobias Ringström', 'tobias@ringstrom.mine.nu'),
-    'dionisos' : (u'Erik Hülsmann', 'e.huelsmann@gmx.net'),
-    'cvs2git' : ('cvs2git', 'admin@example.com'),
+    'cvs2git' : ('cvs2git', 'cvs2git@example.com'),
+EOF
+
+if [ $# -ge 3 ]; then
+    cat "$3" >>$TMPDIR/cvs2git.options
+fi
+cat >>$TMPDIR/cvs2git.options <<'EOF'
     }
 
 ctx.output_option = GitOutputOption(
