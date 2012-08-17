@@ -23,7 +23,7 @@ IFS=`printf '\n\t'`
 
 usage="usage: $0 CVSDIR GITDIR [AUTHORS]"
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
     echo >&2 $usage
     exit 1
 fi
