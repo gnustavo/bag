@@ -120,8 +120,8 @@ ctx.trunk_only = False
 
 ctx.cvs_author_decoder = CVSTextDecoder(
     [
-        'latin1',
         'utf8',
+        'latin1',
         'ascii',
         ],
     fallback_encoding='ascii'
@@ -129,8 +129,8 @@ ctx.cvs_author_decoder = CVSTextDecoder(
 
 ctx.cvs_log_decoder = CVSTextDecoder(
     [
-        'latin1',
         'utf8',
+        'latin1',
         'ascii',
         ],
     fallback_encoding='ascii'
@@ -138,8 +138,8 @@ ctx.cvs_log_decoder = CVSTextDecoder(
 
 ctx.cvs_filename_decoder = CVSTextDecoder(
     [
-        'latin1',
         'utf8',
+        'latin1',
         'ascii',
         ],
     )
