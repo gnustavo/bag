@@ -74,13 +74,13 @@ sub paths {
             if (my $frompath = $path->att('copyfrom-path')) {
                 # It was copied from an existing path.
                 my $fromrev = $path->att('copyfrom-rev');
-                print '"', join('", "', $text, $rev, $frompath, $fromrev), "\"\n";
+                print '"', join('","', $text, $rev, $frompath, $fromrev), "\"\n";
                 # Remember from where it was copied to start tracking its
                 # original path when we reach $fromrev.
                 push @{$holding{$fromrev}}, $frompath;
             } else {
                 # It was created from scratch
-                print '"', join('", "', $text, $rev, '', ''), "\"\n";
+                print '"', join('","', $text, $rev, '', ''), "\"\n";
             }
             warn
                 "$rev ",
